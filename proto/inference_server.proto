@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package gpt2_service;
+
+service GPT2Service {
+  rpc Generate(PromptRequest) returns (PromptResponse) {}
+}
+
+message PromptRequest {
+    string prompt = 1;
+    map<string, string> generation_params = 2;
+}
+
+message PromptResponse {
+    string generated_text = 1;
+    map<string, int32> usage_information = 2;
+}
